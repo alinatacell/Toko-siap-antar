@@ -17,7 +17,7 @@ header h1{margin:0;font-size:20px} header p{margin:5px 0 0;font-size:12px;opacit
 .search{width:100%;padding:12px 15px;border:1px solid #ddd;border-radius:10px;outline:none;font-size:15px;margin-bottom:12px}
 .info{background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:13px;color:#555;box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .table-wrap{background:#fff;border-radius:12px;overflow:auto;box-shadow:0 2px 10px rgba(0,0,0,.07)}
-table{width:100%;border-collapse:collapse;min-width:620px}
+table{width:100%;border-collapse:collapse;min-width:760px}
 th{background:#16a34a;color:#fff;padding:11px 10px;text-align:left;font-size:13px;position:sticky;top:0;z-index:2}
 td{padding:10px;border-bottom:1px solid #eee;font-size:13px;vertical-align:middle}
 tr:hover{background:#f8faf9}
@@ -62,7 +62,7 @@ tr:hover{background:#f8faf9}
 
   <div class="info">
     Menampilkan data langsung dari <b>Google Spreadsheet MEMBER</b>.<br>
-    Tanpa gambar — hanya <b>Nama Produk, Harga</b> dan tombol keranjang.
+    Tanpa gambar — hanya <b>Nama Produk, Deskripsi, Harga</b> dan tombol keranjang.
     <span id="jumlah">Memuat...</span>
   </div>
 
@@ -74,7 +74,7 @@ tr:hover{background:#f8faf9}
         <tr>
           <th>No</th>
           <th>Nama Produk</th>
-          <th>Harga</th>
+          <th>Deskripsi</th>
           <th>Keranjang</th>
         </tr>
       </thead>
@@ -137,7 +137,7 @@ function tampilkanProduk(data){
     <tr>
       <td>${i+1}</td>
       <td><b>${aman(p.nama)}</b></td>
-      <td class="harga">${rupiah(p.harga)}</td>
+      <td>${aman(p.deskripsi)}</td>
       <td>
         <button class="add-cart" onclick="tambahKeranjang('${p.id}')">
           🛒 Keranjang
@@ -178,18 +178,13 @@ function checkoutKeranjang(){
 
 document.getElementById("searchInput").addEventListener("input",function(){
   const q=this.value.toLowerCase().trim();
-
-  tampilkanProduk(
-    q
-      ? semuaProduk.filter(p=>p.nama.toLowerCase().includes(q))
-      : semuaProduk
-  );
+  tampilkanProduk(q?semuaProduk.filter(p=>p.nama.toLowerCase().includes(q)||p.deskripsi.toLowerCase().includes(q)):semuaProduk)
 });
 
 fetch(sheetURL).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.text()})
 .then(text=>{
   const rows=parseCSV(text);
-  semuaProduk=rows.slice(1).map((r,i)=>({id:String(i+2),nama:r[1]||"",harga:r[3]||""})).filter(p=>p.nama.trim());
+  semuaProduk=rows.slice(1).map((r,i)=>({id:String(i+2),nama:r[1]||"",deskripsi:r[2]||"",harga:r[3]||""})).filter(p=>p.nama.trim());
   document.getElementById("status").style.display="none";
   document.getElementById("tableWrap").style.display="block";
   tampilkanProduk(semuaProduk);updateCartCount()
