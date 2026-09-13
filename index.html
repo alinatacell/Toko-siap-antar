@@ -1089,6 +1089,101 @@ margin-top:15px;
 }
 
 </style>
+
+<style id="tsa-pro-inline-menu">
+/* ===== AREA SETELAH RUNNING TEXT: MARKETPLACE PRO ===== */
+#cartFloat{display:none!important;} /* keranjang tidak lagi melayang */
+
+.tsa-inline-market{
+  width:100%;
+  background:#fff;
+  border-bottom:1px solid #e8ecef;
+  padding:10px 10px 12px;
+}
+.tsa-main-actions{
+  max-width:1100px;
+  margin:0 auto 9px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.tsa-action{
+  min-height:58px;
+  border:1px solid #e4e8eb;
+  border-radius:13px;
+  background:#fff;
+  color:#30343a;
+  text-decoration:none!important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  flex-direction:column;
+  font-size:10px;
+  font-weight:800;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+  cursor:pointer;
+}
+.tsa-action .tsa-icon{font-size:21px;line-height:21px}
+.tsa-action.tsa-green{color:#149447;border-color:#cfeedd;background:#f7fdf9}
+.tsa-action.tsa-orange{color:#ed7b00;border-color:#ffe0b0;background:#fffaf2}
+.tsa-action.tsa-dark{color:#30343a}
+.tsa-cart-badge{
+  display:none;
+  position:absolute;
+  top:5px;
+  right:20%;
+  min-width:17px;height:17px;padding:0 4px;
+  border-radius:20px;background:#e53935;color:#fff;
+  font-size:9px;align-items:center;justify-content:center;
+  border:2px solid #fff;
+}
+.tsa-action-cart{position:relative}
+
+.tsa-category-title{
+  max-width:1100px;margin:0 auto 7px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;font-weight:800;color:#333;
+}
+.tsa-category-title span:last-child{font-size:10px;color:#888;font-weight:600}
+.tsa-category-scroll{
+  max-width:1100px;margin:auto;
+  display:flex;gap:7px;overflow-x:auto;
+  padding:1px 1px 4px;
+  scrollbar-width:none;
+}
+.tsa-category-scroll::-webkit-scrollbar{display:none}
+.tsa-cat{
+  flex:0 0 auto;
+  min-width:64px;height:46px;padding:5px 9px;
+  border:1px solid #e4e8eb;border-radius:11px;
+  background:#fff;text-decoration:none!important;color:#3b3f44!important;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1px;font-size:9px;font-weight:700;
+  box-shadow:0 2px 6px rgba(0,0,0,.035);
+}
+.tsa-cat-icon{font-size:18px;line-height:18px}
+.tsa-cat:active,.tsa-action:active{transform:scale(.97)}
+
+@media(min-width:769px){
+  .tsa-main-actions{grid-template-columns:repeat(4,150px);justify-content:center}
+  .tsa-inline-market{padding:13px 18px 15px}
+}
+@media(max-width:768px){
+  .tsa-inline-market{padding-top:9px}
+  .tsa-main-actions{gap:7px}
+  .tsa-action{min-height:55px;border-radius:12px;font-size:9px}
+  .tsa-action .tsa-icon{font-size:20px}
+  /* hilangkan blok hero lama yang dilingkari; isinya tetap ada di HTML agar fungsi tidak dihapus */
+  .hero{display:none!important}
+  .produk-container{grid-template-columns:repeat(2,1fr)!important;gap:8px!important;padding:8px!important}
+  .produk-img-box{height:125px!important}
+  .produk-nama{font-size:11px!important}
+  .produk-deskripsi{font-size:9px!important}
+  .produk-harga{font-size:12px!important}
+}
+</style>
+
 </head>
 
 <body>
@@ -1255,6 +1350,41 @@ onclick="window.open('https://www.facebook.com/share/1BhC4jhcGc/','_blank')">
 
 <div class="garis"></div>
 
+</div>
+
+
+<!-- ===== MENU MARKETPLACE DI BAWAH RUNNING TEXT ===== -->
+<div class="tsa-inline-market" id="tsaMarketplaceMenu">
+  <div class="tsa-main-actions">
+    <a class="tsa-action tsa-green" href="#tsaMarketplaceMenu" onclick="tsaBukaKategori();return false;">
+      <span class="tsa-icon">▦</span><span>Kategori</span>
+    </a>
+    <a class="tsa-action tsa-orange tsa-action-cart" href="cart.html">
+      <span class="tsa-icon">🛒</span><span>Keranjang</span><b id="tsaInlineCartBadge" class="tsa-cart-badge">0</b>
+    </a>
+    <a class="tsa-action tsa-dark" href="javascript:void(0)" onclick="tsaRiwayat();return false;">
+      <span class="tsa-icon">▤</span><span>Riwayat Pesanan</span>
+    </a>
+    <a class="tsa-action tsa-dark" href="javascript:void(0)" onclick="tsaProfil();return false;">
+      <span class="tsa-icon">👤</span><span>Profil</span>
+    </a>
+  </div>
+
+  <div class="tsa-category-title">
+    <span>📦 Kategori Produk</span><span>Geser →</span>
+  </div>
+  <div class="tsa-category-scroll" id="tsaCategoryList">
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">📱</span>LCD</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">🔋</span>Baterai</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">🎧</span>Acc</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">🔧</span>Sparepart</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">🔌</span>IC</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">〰️</span>Flexible</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">🛠️</span>Tool</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">⚙️</span>Mesin</a>
+    <a class="tsa-cat" href="javascript:void(0)" onclick="comingSoon()"><span class="tsa-cat-icon">🔥</span>Promo</a>
+    <a class="tsa-cat" href="#produkList"><span class="tsa-cat-icon">▦</span>Semua</a>
+  </div>
 </div>
 
 <div class="content-scroll">
@@ -2488,5 +2618,43 @@ function bukaLink(url){
     }
 }
 </script>
+
+<script id="tsa-inline-menu-js">
+(function(){
+  function updateInlineCart(){
+    try{
+      const cart=JSON.parse(localStorage.getItem("cart")||"[]");
+      const total=cart.reduce((n,p)=>n+(Number(p.qty)||0),0);
+      const b=document.getElementById("tsaInlineCartBadge");
+      if(b){
+        b.textContent=total>99?"99+":total;
+        b.style.display=total>0?"flex":"none";
+      }
+    }catch(e){}
+  }
+  window.tsaBukaKategori=function(){
+    const el=document.getElementById("tsaCategoryList");
+    if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+  };
+  window.tsaRiwayat=function(){
+    if(typeof popup==="function"){
+      popup("📦 <b>Riwayat Pesanan</b><br><br>Halaman riwayat pesanan siap dihubungkan tanpa mengubah sistem keranjang yang sudah berjalan.");
+    }else{
+      window.location.href="riwayat-pesanan.html";
+    }
+  };
+  window.tsaProfil=function(){
+    if(typeof popup==="function"){
+      popup("👤 <b>Profil</b><br><br>Menu profil pelanggan.");
+    }else{
+      window.location.href="profil.html";
+    }
+  };
+  updateInlineCart();
+  setInterval(updateInlineCart,800);
+  window.addEventListener("storage",updateInlineCart);
+})();
+</script>
+
 </body>
 </html>
