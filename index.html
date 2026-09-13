@@ -6,7 +6,181 @@
 <title>A YUDI THEA | Servis Handphone</title>
 
 <style>
+   /* =========================
+   HP LANDSCAPE
+========================= */
 
+@media screen and (max-width:1024px) and (orientation:landscape){
+
+#list{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+padding:10px;
+}
+
+.card img{
+height:120px;
+}
+
+.info{
+padding:6px;
+}
+
+.info h3{
+font-size:12px;
+}
+
+.info p{
+font-size:10px;
+}
+
+.harga{
+font-size:14px;
+}
+
+.chat{
+width:100%;
+height:30px;
+font-size:10px;
+}
+/* Slider lebih kecil */
+.slider{
+height:110px !important;
+}
+
+.slide img{
+height:110px !important;
+object-fit:cover;
+}
+
+/* Logo tengah */
+.logo-tengah,
+.logo-center,
+#logoCenter{
+width:75px !important;
+height:75px !important;
+bottom:-38px !important;
+}
+
+/* Running text */
+.running-text,
+.marquee,
+#runningText{
+height:20px !important;
+line-height:20px !important;
+font-size:10px !important;
+}
+}
+/* ===========================
+   MENU V15
+=========================== */
+
+#menuBtn{
+position:fixed;
+left:15px;
+top:15px;
+width:55px;
+height:55px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#16a34a,#ff9800);
+color:#fff;
+font-size:28px;
+font-weight:bold;
+cursor:pointer;
+z-index:999999;
+box-shadow:0 6px 20px rgba(0,0,0,.3);
+}
+
+#menuOverlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+z-index:999998;
+}
+
+#sideMenu{
+position:fixed;
+top:0;
+left:-320px;
+width:290px;
+height:100%;
+background:#fff;
+overflow:auto;
+transition:.35s;
+z-index:999999;
+box-shadow:6px 0 25px rgba(0,0,0,.25);
+}
+
+#sideMenu.open{
+left:0;
+}
+
+.menuHeader{
+padding:20px;
+background:linear-gradient(135deg,#16a34a,#ff9800);
+color:#fff;
+font-size:22px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.menuClose{
+cursor:pointer;
+font-size:28px;
+}
+
+.menuItem{
+padding:15px 20px;
+border-bottom:1px solid #eee;
+font-weight:bold;
+cursor:pointer;
+background:#fff;
+transition:.2s;
+}
+
+.menuItem:hover{
+background:#16a34a;
+color:#fff;
+}
+
+.subMenu{
+display:none;
+background:#f8f8f8;
+}
+
+.subMenu a{
+display:block;
+padding:12px 30px;
+text-decoration:none;
+color:#444;
+border-bottom:1px solid #eee;
+}
+
+.subMenu a:hover{
+background:#16a34a;
+color:#fff;
+}
+
+@media(max-width:768px){
+
+#menuBtn{
+left:10px;
+top:10px;
+width:48px;
+height:48px;
+font-size:24px;
+}
+
+#sideMenu{
+width:260px;
+}
+
+}
 /* ===== RESET ===== */
 *{
 margin:0;
@@ -377,13 +551,7 @@ background-clip:content-box,border-box;
 }
 
 .logo-tengah img{
-width:40%;
-height:auto;
-margin-top:-130px;
-}
-
-.logo-tengah img{
-width:50%;
+width:60%;
 height:auto;
 margin-top:-130px;
 }
@@ -586,10 +754,21 @@ background:#ff4500;
 /* ==== V7 MOBILE ==== */
 @media (max-width:768px){
 
-.header{height:230px!important;}
-.logo-tengah{width:150px!important;height:144px!important;bottom:-50px!important;border-width:8px!important;}
-.logo-tengah img{width:70%!important;margin-top:-40px!important;}
-.slide-manual img{width:100px!important;height:170px!important;}
+.header{height:150px!important;}
+.slider-sheet{
+    top:5px!important;
+}
+.logo-tengah{width:110px!important;height:125px!important;bottom:-50px!important;border-width:6px!important;}
+.logo-tengah img{
+    width:75%!important;
+    max-width:none!important;
+    height:auto!important;
+    margin-top:-30px!important;
+}
+.slides{
+    animation-duration: 20s !important;
+   }
+.slide-manual img{width:90px!important;height:140px!important;}
 .running-text{font-size:12px!important;padding:2px!important;}
 .hero{padding:20px 12px!important;}
 .hero h2{font-size:20px!important;line-height:1.3;}
@@ -615,11 +794,6 @@ flex:0 0 auto!important;
 
 .search-box input{
 width:100%!important;
-}
-
-.produk-scroll{
-height:auto!important;
-padding-bottom:120px!important;
 }
 
 
@@ -718,6 +892,19 @@ max-height:95vh!important;
 /* .search-box input{
     width:80% !important;
 }
+/* HEADER STICKY */  
+.sticky-header{  
+    position:sticky;  
+    top:0;  
+    z-index:9999;  
+    background:#fff;  
+}  
+  
+/* Supaya produk tidak tertutup */  
+.hero{  
+    margin-top:10px;  
+}  
+}  
 
 /* ===== APK CARD V2 ===== */
 
@@ -859,183 +1046,181 @@ font-size:13px;
 margin-top:15px;
 }
 }
-/* ===== POPUP PROMO MODE HP ===== */
-
 @media (max-width:768px){
 
-    #promoPopup{
-        padding:6px !important;
-    }
-
-    .promo-box{
-        background:#fff;
-        width:88%;
-        max-width:320px;
-        max-height:75vh;
-        overflow-y:auto;
-        padding:12px;
-        border-radius:12px;
-    }
-
-    .logo{
-        width:120px;
-        margin:auto;
-        display:block;
-    }
-
-    .promo-box h2{
-        font-size:16px;
-        margin:8px 0;
-    }
-
-    .promo-text{
-        font-size:12px;
-        line-height:1.5;
-        text-align:left;
-    }
-
-    .btn-belanja{
-        width:100%;
-        padding:10px;
-        font-size:14px;
-        border-radius:25px;
-    }
-
-    .promo-highlight{
-        font-size:13px;
-        padding:8px;
-        line-height:1.4;
-    }
-    /* HEADER STICKY */
-.sticky-header{
-    position:sticky;
-    top:0;
-    z-index:9999;
-    background:#fff;
+#promoPopup{
+    padding:10px!important;
 }
 
-/* Supaya produk tidak tertutup */
-.hero{
-    margin-top:10px;
-}
-/* ===== MENU HAMBURGER ===== */
-
-#menuBtn{
-position:fixed;
-top:15px;
-left:15px;      /* pindah ke kiri */
-right:auto;     /* matikan posisi kanan */
-width:55px;
-height:55px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#16a34a,#ff9800);
-color:#fff;
-font-size:30px;
-border-radius:15px;
-cursor:pointer;
-z-index:999999;
-box-shadow:0 6px 18px rgba(0,0,0,.25);
-transition:.3s;
+.promo-box{
+    width:82%!important;
+    max-width:290px!important;
+    max-height:68vh!important;
+    padding:10px!important;
+    border-radius:10px!important;
 }
 
-#menuBtn:hover{
-transform:scale(1.08);
-}
-/* Desktop */
-@media (min-width:769px){
-#menuBtn{
-left:20px;
-top:20px;
-width:60px;
-height:60px;
-font-size:34px;
+.logo{
+    width:90px!important;
 }
 
-
-#sideMenu{
-position:fixed;
-top:0;
-right:-280px;
-width:260px;
-height:100%;
-background:#fff;
-box-shadow:-5px 0 20px rgba(0,0,0,.25);
-transition:.35s;
-z-index:999999;
-overflow:auto;
+.promo-box h2{
+    font-size:14px!important;
+    margin:6px 0!important;
 }
 
-#sideMenu a{
-display:block;
-padding:16px 20px;
-text-decoration:none;
-color:#333;
-font-weight:bold;
-border-bottom:1px solid #eee;
+.promo-text{
+    font-size:11px!important;
+    line-height:1.35!important;
 }
 
-#sideMenu a:hover{
-background:#16a34a;
-color:#fff;
+.promo-highlight{
+    font-size:11px!important;
+    padding:8px!important;
 }
 
-.menuHeader{
-padding:18px;
-background:linear-gradient(135deg,#16a34a,#ff9800);
-color:#fff;
-font-size:22px;
-font-weight:bold;
-display:flex;
-justify-content:space-between;
-align-items:center;
+.btn-belanja,
+.btn-close{
+    font-size:13px!important;
+    padding:9px!important;
+    border-radius:20px!important;
 }
 
-.menuHeader span{
-cursor:pointer;
-font-size:24px;
-}
-
-#menuOverlay{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.45);
-z-index:999998;
-}
 }
 
 </style>
 </head>
 
 <body>
+<div id="fbPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999999;justify-content:center;align-items:center;">
+  <div style="background:#fff;width:90%;max-width:340px;padding:20px;border-radius:15px;text-align:center;">
+    
+    <img src="logo2.png" style="width:90px;margin-bottom:10px;">
 
-<!-- MENU HAMBURGER -->
-<div id="menuBtn" onclick="bukaMenu()">☰</div>
+    <h3 style="color:#16a34a;">TOKO SIAP ANTAR</h3>
+
+    <p style="margin:15px 0;line-height:1.5">
+      ⚠️ Anda membuka website melalui <b>Facebook</b>.<br><br>
+      Agar semua fitur seperti <b>Keranjang, Checkout, Peta, dan Pembayaran</b> berjalan normal, silakan tekan <b>⋮</b> di kanan atas lalu pilih <b>Buka di Browser</b>.
+    </p>
+
+    <button onclick="tutupFbPopup()" style="width:100%;padding:12px;background:#16a34a;color:#fff;border:none;border-radius:8px;font-weight:bold;">
+      Saya Mengerti
+    </button>
+
+  </div>
+</div>
+<button id="menuBtn" onclick="bukaMenu()">☰</button>
+
+<div id="menuOverlay" onclick="tutupMenu()"></div>
 
 <div id="sideMenu">
 
 <div class="menuHeader">
 MENU
-<span onclick="tutupMenu()">✕</span>
+<div class="menuClose" onclick="tutupMenu()">✕</div>
+</div>
+   
+<div class="menuItem" onclick="refreshHalaman()">
+🔄 Refresh Halaman
+</div>
+   
+<div class="menuItem" onclick="loginMember()">
+🆔 Harga Member
+</div>
+<div class="menuItem"
+onclick="window.location.href='jualbelihp.html'">
+📱 Jual Beli HP Second
+</div>
+<div class="menuItem" onclick="toggleSub('produk')">
+📦 Kategori Produk
 </div>
 
-<a href="#kategori">📦 Kategori Produk</a>
+<div id="produk" class="subMenu">
 
-<a href="mitra.html">🤝 Mitra Usaha</a>
 
-<a href="https://www.google.com/maps?q=-6.883831,108.302788" target="_blank">
-📍 Lokasi Toko
+<a href="#" onclick="return comingSoon();">Baterai</a>
+
+<a href="#" onclick="return comingSoon();">Accessories</a>
+
+<a href="#" onclick="return comingSoon();">Sparepart</a>
+
+<a href="#" onclick="return comingSoon();">IC</a>
+
+<a href="#" onclick="return comingSoon();">Flexible</a>
+
+<a href="#" onclick="return comingSoon();">Tool</a>
+
+<a href="#" onclick="return comingSoon();">Mesin</a>
+
+<a href="#" onclick="return comingSoon();">Promo</a>
+
+<a href="index.html">Semua Produk</a>
+
+</div>
+
+<div class="menuItem" onclick="toggleSub('mitra')">
+🤝 Mitra Usaha
+</div>
+
+<div id="mitra" class="subMenu">
+
+<a href="#" onclick="bukaLink('https://vt.tokopedia.com/t/ZS9MCfPULW2WP-yFINb/');return false;">
+1. 🛒 Tukang LCD HP
 </a>
 
-<a href="afiliasi.html">💰 Afiliator</a>
+<a href="https://collshp.com/ayudithea" target="_blank">
+2. 📦 Toko Serba Ada
+</a>
 
-<a href="about.html">ℹ️ About</a>
+<a href="#" onclick="return comingSoon();">Mitra 3</a>
+<a href="#" onclick="return comingSoon();">Mitra 4</a>
+<a href="#" onclick="return comingSoon();">Mitra 5</a>
+<a href="#" onclick="return comingSoon();">Mitra 6</a>
+<a href="#" onclick="return comingSoon();">Mitra 7</a>
+<a href="#" onclick="return comingSoon();">Mitra 8</a>
+<a href="#" onclick="return comingSoon();">Mitra 9</a>
+<a href="#" onclick="return comingSoon();">Mitra 10</a>
 
 </div>
+<div class="menuItem" onclick="toggleSub('lokasi')">
+📍 Lokasi Toko
+</div>
+    
+<div id="lokasi" class="subMenu">
 
-<div id="menuOverlay" onclick="tutupMenu()"></div>
+  <a href="https://share.google/7Prz1ZIyO0VWxSAry" target="_blank">
+   Depan pasar hewan blok jumat Maja utara
+  </a>
+<a href="#">Lokasi 2</a>
+<a href="#">Lokasi 3</a>
+<a href="#">Lokasi 4</a>
+<a href="#">Lokasi 5</a>
+<a href="#">Lokasi 6</a>
+<a href="#">Lokasi 7</a>
+<a href="#">Lokasi 8</a>
+<a href="#">Lokasi 9</a>
+<a href="#">Lokasi 10</a>
+
+</div>
+<div class="menuItem"
+onclick="window.open('https://wa.me/6282319264646','_blank')">
+💬 Chat Admin
+</div>
+
+<div class="menuItem"
+onclick="window.open('https://www.facebook.com/share/1BhC4jhcGc/','_blank')">
+📘 Facebook Toko Siap Antar
+</div>
+
+<div class="menuItem" onclick="window.open('https://drive.google.com/file/d/1Akaqw9e2_YLlw8mKrtc_P8_URJYxIVRv/view?usp=drivesdk','_blank')">
+📲 Download APK
+</div>
+<div class="menuItem" onclick="aboutApp()">
+ℹ About
+</div>
+
+</div>
 <div style="width:100%;max-width:1500px;margin:auto;min-height:100vh;">
 <!-- FLOAT CART -->
 <div id="cartFloat" onclick="window.location.href='cart.html'">
@@ -1072,12 +1257,27 @@ MENU
 
 </div>
 
-<!-- GARIS -->
-<div class="garis"></div>
-<!-- HERO -->
+<div class="content-scroll">
+
 <div class="hero">
 <h2><b>👉TOKO SIAP ANTAR👈<br>Solusi Cepat Saat Stok Darurat</h2>
 <p>Ready Stock • Harga Grosir • Bergaransi</p>
+
+<p style="
+background:#fff3cd;
+color:#856404;
+padding:10px;
+border-radius:10px;
+border:2px solid #ffc107;
+font-weight:bold;
+margin:12px auto;
+max-width:500px;
+text-align:center;
+">
+🕗 <b>Jam Operasional TOKO SIAP ANTAR</b><br>
+Melayani pengantaran setiap hari pukul <b>08.00 – 17.00 WIB</b>.<br><br>
+📦 <b>Via Ekspedisi di bawah ini </b> dan <b>Mitra usaha di Menu</b> tetap dapat dipesan <b>24 jam</b>.
+</p>
 
 <div style="text-align:center;margin:15px 10px;">
 
@@ -1105,7 +1305,7 @@ Cocok untuk pengiriman ke seluruh Indonesia. Estimasi pengiriman ±2 hari, mengi
 </a>
 <div style="text-align:center;margin:15px 10px;">
 
-<a href="index.html"
+<a href="index2.html"
 target="_blank"
 style="
 display:inline-flex;
@@ -1186,7 +1386,8 @@ Belanja sparepart HP lebih mudah, lebih cepat, dan langsung dari aplikasi Androi
 </p>
 
 <a class="apk-install"
-href="https://drive.google.com/uc?export=download&id=1qXggpfMAJW7D-KeETwQw3bGSmi8kLfF8">
+href="https://drive.google.com/file/d/1Akaqw9e2_YLlw8mKrtc_P8_URJYxIVRv/view?usp=drivesdk"
+target="_blank">
 ⬇ INSTALL APLIKASI
 </a>
 
@@ -1212,9 +1413,9 @@ href="https://drive.google.com/uc?export=download&id=1qXggpfMAJW7D-KeETwQw3bGSmi
 
 <div style="display:flex;justify-content:center;gap:35px;flex-wrap:wrap;">
 
-<a href="https://www.facebook.com/share/1BKhyGzCrJ/" target="_blank" style="text-decoration:none;color:#1877F2;">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" width="45"><br>
-Facebook
+<a href="https://www.facebook.com/share/1BhC4jhcGc/" target="_blank" style="text-decoration:none;color:#1877F2;">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" width="45"><br>
+    Facebook Toko Siap Antar
 </a>
 
 <a href="https://www.instagram.com/servicehp_majautara?igsh=NnFtMGFxMTE3NDFk" target="_blank" style="text-decoration:none;color:#E4405F;">
@@ -1418,10 +1619,19 @@ fetch(sheetURL)
 
 const json=JSON.parse(data.substring(47).slice(0,-2));
 
-let rows=json.table.rows;
+let rows = json.table.rows;
+
+// Urutkan harga dari termurah ke termahal
+rows.sort(function(a,b){
+
+    let hargaA = Number(a.c[3]?.v || 0);
+    let hargaB = Number(b.c[3]?.v || 0);
+
+    return hargaA - hargaB;
+
+});
 
 let html="";
-
 rows.forEach(r=>{
 
 let nama=r.c[1]?.v;
@@ -1696,79 +1906,58 @@ box-shadow:0 4px 10px rgba(0,0,0,0.4);
 }
 @media (max-width:768px){
 
+@media (max-width:768px){
+
 .zoomBox{
-width:92%;
-max-width:420px;
-padding:20px;
-min-height:auto;
-max-height:90vh;
-overflow:auto;
+    width:88%!important;
+    max-width:330px!important;
+    max-height:78vh!important;
+    padding:12px!important;
+    border-radius:12px!important;
+    overflow:auto;
 }
 
 #zoomImg{
-width:100%;
-height:auto;
-max-height:45vh;
-object-fit:contain;
-border-radius:12px;
-margin-bottom:12px;
+    max-height:240px!important;
+    border-radius:8px;
 }
 
 #zoomNama{
-font-size:20px;
-font-weight:bold;
-margin-top:5px;
+    font-size:16px!important;
 }
 
 #zoomDeskripsi{
-font-size:14px;
-color:#555;
-margin:8px 0;
-line-height:1.4;
-max-height:120px;
-overflow:auto;
+    font-size:13px!important;
+    line-height:1.4!important;
+    margin:6px 0!important;
+    max-height:70px!important;
 }
 
 #zoomHarga{
-font-size:20px;
-color:#ff6a00;
-font-weight:bold;
-margin:8px 0;
+    font-size:18px!important;
 }
 
-#zoomCart{
-width:100%;
-padding:12px;
-font-size:16px;
-border-radius:8px;
+.popup-icon,
+.popup-checkout{
+    height:42px!important;
+    font-size:14px!important;
 }
 
-@keyframes zoomIn{
-from{
-transform:scale(.9);
-opacity:0;
+.popup-icon span{
+    font-size:11px!important;
 }
-to{
-transform:scale(1);
-opacity:1;
+
+.popup-bottom{
+    gap:6px!important;
+    margin-top:10px!important;
 }
 
 .zoomClose{
-position:absolute;
-top:-15px;
-right:-15px;
-background:#ff3b3b;
-color:white;
-font-size:22px;
-width:40px;
-height:40px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,0.4);
+    width:32px!important;
+    height:32px!important;
+    font-size:18px!important;
+}
+
 }
 /* ADMIN */
 
@@ -1860,7 +2049,6 @@ font-size:16px;
 padding:14px 20px;
 }
 
-}
 </style>
 
 
@@ -2100,14 +2288,204 @@ function popupSlider(src){
 }
 </script>
 <script>
+
 function bukaMenu(){
-document.getElementById("sideMenu").style.right="0";
+
+document.getElementById("sideMenu").classList.add("open");
+
 document.getElementById("menuOverlay").style.display="block";
+
 }
 
 function tutupMenu(){
-document.getElementById("sideMenu").style.right="-280px";
+
+document.getElementById("sideMenu").classList.remove("open");
+
 document.getElementById("menuOverlay").style.display="none";
+
+}
+   
+function refreshHalaman(){
+    tutupMenu();
+    setTimeout(function(){
+        location.reload();
+    },200);
+} 
+
+
+function loginMember(){
+
+tutupMenu();
+
+let box=document.createElement("div");
+
+box.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:99999";
+
+box.innerHTML=`
+<div style="background:#fff;width:90%;max-width:340px;border-radius:15px;padding:20px;text-align:center">
+
+<h3 style="color:#16a34a">TOKO SIAP ANTAR</h3>
+
+<p style="margin:10px 0;">Masukkan ID Member</p>
+
+<input id="idMemberInput"
+placeholder="Masukan ID member terdaftar"
+style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
+
+<div style="display:flex;gap:10px;margin-top:15px">
+
+<button id="batalMember"
+style="flex:1;padding:12px;border:none;background:#999;color:#fff;border-radius:8px">
+Batal
+</button>
+
+<button id="loginMemberBtn"
+style="flex:1;padding:12px;border:none;background:#16a34a;color:#fff;border-radius:8px">
+Login
+</button>
+
+</div>
+
+<div id="pesanMember" style="margin-top:12px;color:red;font-size:13px"></div>
+
+</div>
+`;
+
+document.body.appendChild(box);
+
+document.getElementById("batalMember").onclick=function(){
+box.remove();
+};
+
+document.getElementById("loginMemberBtn").onclick=function(){
+
+let id=document.getElementById("idMemberInput").value.trim();
+
+if(id==""){
+document.getElementById("pesanMember").innerHTML="Masukkan ID Member.";
+return;
+}
+
+const sheet="https://docs.google.com/spreadsheets/d/1H23wsTKmR1grQgSAqULbUCM9wQdfx5u6RHJwrrbROG0/gviz/tq?sheet=MEMBER ID";
+
+fetch(sheet)
+.then(res=>res.text())
+.then(data=>{
+
+const json=JSON.parse(data.substring(47).slice(0,-2));
+
+const rows=json.table.rows;
+
+let ketemu=false;
+
+rows.forEach(r=>{
+
+let idMember=r.c[1]?.v;
+
+if(String(idMember).trim()==id){
+ketemu=true;
+}
+
+});
+
+if(ketemu){
+
+localStorage.setItem("memberID",id);
+
+box.remove();
+
+setTimeout(function(){
+    window.location.href="lcd.html";
+},100);
+
+}else{
+
+document.getElementById("pesanMember").innerHTML="❌ ID Member tidak ditemukan.";
+
+}
+
+});
+
+};
+
+}
+
+function aboutApp(){
+
+popup(`
+
+📱 TOKO SIAP ANTAR
+
+Versi : 2.0.0
+
+⭐⭐⭐⭐⭐ 5.0
+
+Belanja sparepart HP lebih mudah langsung dari aplikasi Android.
+
+✅ Gratis
+
+🛡 Aman
+
+🔄 Selalu Update
+
+`);
+
+tutupMenu();
+
+}
+
+function toggleSub(id){
+
+    let menu = document.getElementById(id);
+
+    if(menu.style.display==="block"){
+        menu.style.display="none";
+    }else{
+
+        document.querySelectorAll(".subMenu").forEach(function(el){
+            el.style.display="none";
+        });
+
+        menu.style.display="block";
+    }
+
+}
+</script>
+<script>
+function comingSoon(){
+    popup(`
+🚧 Menu ini masih dalam tahap pengembangan.
+
+Sedang dilakukan proses update.
+
+Silakan kunjungi kembali nanti.
+
+Terima kasih 😊
+    `);
+
+    tutupMenu();
+
+    return false;
+}
+</script>
+   <script>
+function tutupFbPopup(){
+    document.getElementById("fbPopup").style.display="none";
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+    if(/FBAN|FBAV/i.test(navigator.userAgent)){
+        document.getElementById("fbPopup").style.display="flex";
+    }
+});
+</script>
+<script>
+function bukaLink(url){
+    if (window.Android && Android.openExternal) {
+        Android.openExternal(url);
+    } else {
+        window.location.href = url;
+    }
 }
 </script>
 </body>
